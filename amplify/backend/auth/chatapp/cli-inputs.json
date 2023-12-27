@@ -54,8 +54,22 @@
       "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://coltypop.com\",\"https://main.d6wxvj7z9u7jn.amplifyapp.com\"],\"LogoutURLs\":[\"https://coltypop.com\",\"https://main.d6wxvj7z9u7jn.amplifyapp.com\"]}",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://coltypop.com\",\"https://main.d6wxvj7z9u7jn.amplifyapp.com\",\"https://4hagvg5iblxa-dev.auth.us-east-1.amazoncognito.com\"],\"LogoutURLs\":[\"https://coltypop.com\",\"https://main.d6wxvj7z9u7jn.amplifyapp.com\",\"https://4hagvg5iblxa-dev.auth.us-east-1.amazoncognito.com\"]}",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": []
   }
 }
