@@ -1,24 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { Amplify } from 'aws-amplify';
+import { Authenticator } from '@aws-amplify/ui-react';
 import amplifyconfig from './amplifyconfiguration.json';
+import '@aws-amplify/ui-react/styles.css';
 import './App.css'
 
 Amplify.configure(amplifyconfig);
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <h1>Chat App</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
-  )
+  return <Authenticator>
+          {({ signOut, user }) => (
+            <main>
+              <h1>Hello {user.username}</h1>
+              <button onClick={signOut}>Sign out</button>
+            </main>
+          )}
+        </Authenticator>
 }
 
 export default App
