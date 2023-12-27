@@ -58,11 +58,30 @@
       "service": "Cognito"
     }
   },
+  "parameters": {
+    "AMPLIFY_storage_chatappe73a5b0a_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "chatappe73a5b0a"
+        }
+      ]
+    },
+    "AMPLIFY_storage_chatappe73a5b0a_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "chatappe73a5b0a"
+        }
+      ]
+    }
+  },
   "storage": {
-    "s3chatappstorage": {
+    "chatappe73a5b0a": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
-      "service": "S3"
+      "service": "S3",
+      "serviceType": "imported"
     }
   }
 }

@@ -16,7 +16,11 @@
         "chatapp": {}
       },
       "storage": {
-        "s3chatappstorage": {}
+        "s3chatappstorage": {},
+        "chatappe73a5b0a": {
+          "bucketName": "chatapp-storage211410-dev",
+          "region": "us-east-1"
+        }
       }
     }
   }
