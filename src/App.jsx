@@ -11,6 +11,7 @@ function App() {
           {({ signOut, user }) => (
             <main>
               <h1>Hello {user.username}</h1>
+              {console.log(user)}
               <button onClick={signOut}>Sign out</button>
             </main>
           )}
