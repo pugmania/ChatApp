@@ -21,7 +21,7 @@ function App() {
     }
     listImages();
   } , [])
-  return <Authenticator loginMechanisms={['username', 'email']}>
+  return <Authenticator>
           {({ signOut, user }) => (
             <main>
               <h1>Hello {user.username}</h1>
