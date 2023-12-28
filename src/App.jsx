@@ -12,6 +12,7 @@ function App() {
     function listImages() {
       list('photos/')
         .then(result => {
+          console.log(result)
           result.forEach(async (photo) => {
             getUrl(photo)
             console.log(photo)
