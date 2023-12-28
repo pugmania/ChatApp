@@ -10,7 +10,7 @@ Amplify.configure(amplifyconfig);
 function App() {
   useEffect(() => {
     function listImages() {
-      list('public/photos/')
+      list('/public/photos/')
         .then(result => {
           result.forEach(async (photo) => {
             getUrl(photo)
