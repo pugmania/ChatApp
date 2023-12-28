@@ -59,25 +59,25 @@
     }
   },
   "parameters": {
-    "AMPLIFY_storage_chatappe73a5b0a_bucketName": {
+    "AMPLIFY_storage_chatapp51a92329_bucketName": {
       "usedBy": [
         {
           "category": "storage",
-          "resourceName": "chatappe73a5b0a"
+          "resourceName": "chatapp51a92329"
         }
       ]
     },
-    "AMPLIFY_storage_chatappe73a5b0a_region": {
+    "AMPLIFY_storage_chatapp51a92329_region": {
       "usedBy": [
         {
           "category": "storage",
-          "resourceName": "chatappe73a5b0a"
+          "resourceName": "chatapp51a92329"
         }
       ]
     }
   },
   "storage": {
-    "chatappe73a5b0a": {
+    "chatapp51a92329": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3",
