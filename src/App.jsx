@@ -10,7 +10,7 @@ Amplify.configure(amplifyconfig);
 function App() {
   useEffect(() => {
     function listImages() {
-      list('photos/')
+      list('public/photos/')
         .then(result => {
           result.forEach(async (photo) => {
             getUrl(photo)
@@ -21,7 +21,7 @@ function App() {
     }
     listImages();
   } , [])
-  return <Authenticator>
+  return <Authenticator loginMechanisms={['username', 'email']}>
           {({ signOut, user }) => (
             <main>
               <h1>Hello {user.username}</h1>
