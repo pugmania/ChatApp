@@ -3,6 +3,7 @@ import { Amplify } from 'aws-amplify';
 import { Authenticator, Flex, TextField } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import './App.css';
+import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { generateClient } from "aws-amplify/api";
 import { mutations, queries } from './graphql';
 import awsmobile from './aws-exports';
@@ -14,8 +15,7 @@ import {
   MessageInput,
   Conversation
 } from "@chatscope/chat-ui-kit-react";
-import { list } from 'aws-amplify/storage';
-
+import { list, getUrl } from 'aws-amplify/storage'
 
 const client = generateClient()
 Amplify.configure(awsmobile);
@@ -30,7 +30,7 @@ export default function App() {
     async function updateBackgroundImage() {
       const imageName = await getRandomImage();
       if (imageName) {
-        const url = await Storage.get(imageName, { level: 'public' });
+        const url = await getUrl(imageName, { level: 'public' });
         setBackgroundImage(url);
       }
     }
@@ -38,18 +38,8 @@ export default function App() {
   }, [])
   
   useEffect( () => {
-    client.graphql({
-      query: queries.listChatrooms,
-      variables: {
-          input: {
-            "Chats": [],
-            "title": "Lorem ipsum dolor sit amet"
-      }}
-    })
-    .then((result) => {
-      setChatrooms(result.data.listChatrooms.items);
-      console.log(result);
-    })
+    client.graphql({query: queries.listChatrooms})
+    .then((result) => {setChatrooms(result.data.listChatrooms.items)})
   }, [])
 
   const listImages = async () => {
