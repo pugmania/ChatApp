@@ -3,6 +3,11 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-size: cover; /* Cover the entire viewport */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  min-height: 100vh; /* Minimum height to full viewport height */
+  min-width: 100vw; /* Minimum width to full viewport width */
 }
 
 .logo {
