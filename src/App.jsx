@@ -26,8 +26,6 @@ export default function App() {
   const [chatrooms, setChatrooms] = useState([]);
   const [chats, setChats] = useState([]);
 
-
-
   useEffect(() => {
     async function updateBackgroundImage() {
       const imageName = await getRandomImage();
@@ -57,13 +55,13 @@ export default function App() {
   const listImages = async () => {
     try {
       const result = await list('public/photos/', { level: 'public' });
-      return result.map(file => file.key);
+      return result.items.map(file => file.key);
     } catch (error) {
       console.error('Error fetching images from S3', error);
       return [];
     }
   }
-  
+
   const getRandomImage = async () => {
     const images = await listImages();
     if (images.length === 0) return null;
