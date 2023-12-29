@@ -75,6 +75,11 @@ export default function App() {
       } catch (err) {console.log('error sending chat:', err);}
   }
 
+  const selectChatroom = (chatroom) => {
+    client.graphql({query: queries.getChatroom, variables: {id: chatroom.id}})
+    .then((result) => {setChats(result.data.getChatroom.chats.items)})
+  }
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       sendChat();
@@ -101,20 +106,21 @@ export default function App() {
                               info={chatroom.createdAt}
                               unreadCnt={0}
                               active
+                              onClick={() => selectChatroom(chatroom)}
                             >
                               <Avatar src={null} name={chatroom.owner} />
                             </Conversation>
                         ))}
                         </ConversationList>
                       </Sidebar>}
-                      <ConversationHeader>
-                        <Avatar src={null} name="Zoe" />
-                        <ConversationHeader.Content userName="Zoe" info="Active 10 mins ago" />
-                        <ConversationHeader.Actions>
-                          <InfoButton />
-                        </ConversationHeader.Actions>          
-                      </ConversationHeader>
                       <ChatContainer>
+                        <ConversationHeader>
+                          <Avatar src={null} name="Zoe" />
+                          <ConversationHeader.Content userName="Zoe" info="Active 10 mins ago" />
+                          <ConversationHeader.Actions>
+                            <InfoButton />
+                          </ConversationHeader.Actions>          
+                        </ConversationHeader>
                         <MessageList>
                           {chats &&
                             chats.map((chat) => (
