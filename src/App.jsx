@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import { Amplify } from 'aws-amplify';
-import { Authenticator, Flex, TextField } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import './App.css';
 import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
@@ -13,7 +13,12 @@ import {
   MessageList,
   Message,
   MessageInput,
-  Conversation
+  Conversation,
+  ConversationList,
+  Sidebar,
+  Avatar,
+  ConversationHeader,
+  InfoButton
 } from "@chatscope/chat-ui-kit-react";
 import { list, getUrl } from 'aws-amplify/storage'
 
@@ -86,16 +91,29 @@ export default function App() {
                   <p>Choose a chatroom below</p>
                     <MainContainer>
                       {chatrooms &&
-                        chatrooms.map((chatroom) => (
-                          <Conversation
-                            key={chatroom.id}
-                            name={chatroom.title}
-                            lastSenderName={chatroom.owner}
-                            info={chatroom.createdAt}
-                            unreadCnt={0}
-                            active
-                          />
-                      ))}
+                      <Sidebar position="left" scrollable={false}>
+                        <ConversationList>
+                          {chatrooms.map((chatroom) => (
+                            <Conversation
+                              key={chatroom.id}
+                              name={chatroom.title}
+                              lastSenderName={chatroom.owner}
+                              info={chatroom.createdAt}
+                              unreadCnt={0}
+                              active
+                            >
+                              <Avatar src={null} name={chatroom.owner} />
+                            </Conversation>
+                        ))}
+                        </ConversationList>
+                      </Sidebar>}
+                      <ConversationHeader>
+                        <Avatar src={null} name="Zoe" />
+                        <ConversationHeader.Content userName="Zoe" info="Active 10 mins ago" />
+                        <ConversationHeader.Actions>
+                          <InfoButton />
+                        </ConversationHeader.Actions>          
+                      </ConversationHeader>
                       <ChatContainer>
                         <MessageList>
                           {chats &&
