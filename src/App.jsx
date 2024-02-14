@@ -49,7 +49,7 @@ export default function App() {
 
   const listImages = async () => {
     try {
-      const result = await list('public/photos/', { level: 'public' });
+      const result = await list('/photos/', { level: 'public'});
       return result.items.map(file => file.key);
     } catch (error) {
       console.error('Error fetching images from S3', error);
