@@ -3,7 +3,7 @@ import { Amplify } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import './App.css';
-import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { generateClient } from "aws-amplify/api";
 import { mutations, queries } from './graphql';
 import awsmobile from './aws-exports';
@@ -26,7 +26,7 @@ const client = generateClient()
 Amplify.configure(awsmobile);
 
 export default function App() {
-  const [backgroundImage, setBackgroundImage] = useState(''); // [1
+  const [backgroundImage, setBackgroundImage] = useState(''); // 
   const [message, setMessage] = useState('');
   const [chatrooms, setChatrooms] = useState([]);
   const [chats, setChats] = useState([]);
