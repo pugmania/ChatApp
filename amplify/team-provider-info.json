@@ -12,15 +12,14 @@
       "AmplifyAppId": "d6wxvj7z9u7jn"
     },
     "categories": {
-      "auth": {
-        "chatapp": {}
-      },
       "storage": {
-        "s3chatappstorage": {},
         "chatapp51a92329": {
           "bucketName": "chatapp-storage211410-dev",
           "region": "us-east-1"
         }
+      },
+      "auth": {
+        "chatapp": {}
       }
     }
   }
