@@ -87,7 +87,7 @@ export default function App() {
   }
   return  <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <header className="App-header">
-              <h1>Chat App</h1>
+              <h1>Chat Application</h1>
             </header>
             <Authenticator loginMechanisms={['email', 'username']} socialProviders={['google']}>
               {({ signOut, user }) => (
