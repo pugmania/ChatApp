@@ -7,6 +7,7 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { generateClient } from "aws-amplify/api";
 import { mutations, queries } from './graphql';
 import awsmobile from './aws-exports';
+import { fetchUserAttributes } from 'aws-amplify/auth';
 import {
   MainContainer,
   ChatContainer,
@@ -45,6 +46,7 @@ export default function App() {
   useEffect( () => {
     client.graphql({query: queries.listChatrooms})
     .then((result) => {setChatrooms(result.data.listChatrooms.items)})
+    .then(() => {fetchUserAttributes().then((result) => console.log(result))})
   }, [])
 
   const listImages = async () => {
@@ -91,7 +93,7 @@ export default function App() {
             </header>
             <Authenticator loginMechanisms={['email', 'username']} socialProviders={['google']}>
               {({ signOut, user }) => (
-                <main>
+                <main className="main">
                   <h2>Hello {user.username}</h2>
                   <p>Choose a chatroom below</p>
                     <MainContainer>
